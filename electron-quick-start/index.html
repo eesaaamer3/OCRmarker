@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link rel="stylesheet" type ="text/css" href="main.css">  
+      <link href="https://fonts.googleapis.com/css?family=Arimo&display=swap" rel="stylesheet">
+      <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+      <meta charset="UTF-8">
+      <title> Assistant Tomoya - Grader</title>
+    </head>
+    <style>
+    
+    #subb{
+      display: none;
+    }
+    #uploader{
+      display: none;
+    }
+
+    </style>
+    <body>
+
+      <div id="holder">
+        <div>
+          <h3 class="company-name">ASSISTANT TOMOYA</h3>
+          <h1 class="app-name"> GRADER </h1>
+      </div>
+    <button type = "button" class = "button-official" onclick = "showStuff()"> Start Grading! </button>
+      </div>
+
+      <div id="uploader">
+        <input type="file">
+        <input type="file">
+
+        <input type="file">
+        <button onclick="showsub()">Upload image</button>
+      </div>
+
+
+
+
+          <div id = "subb">
+            <h1> ASSESSMENT INFORMATION </h1>
+            <h3> Here is where you will submit all necessary information required! </h3>
+            <div id ="questions">
+                What is the name of the student? <input type="text" id ="name-of-student"> <br>
+                <br>
+                What assessment is this? <input type="text" id="assessment-id"> <br>
+                <br>
+            </div>
+            <br>
+            <div id="questions1">
+                How many questions are there on the first page? <input type="number" name="quota" id = "hello1">
+                <button class = "but" onclick="num_questions1();"> Submit </button> <br>
+                <br>
+            </div>
+            <br>
+            <div id="questions2">
+                How many questions are there on the second page? <input type="number" name="quota" id = "hello2"> 
+                <button class = "but" onclick="num_questions2();"> Submit </button> <br>
+                <br>
+            </div>
+            <br>
+            <div id="questions3">
+                How many questions are there on the third page? <input type="number" name="quota" id = "hello3"> 
+                <button class = "but" onclick="num_questions3();"> Submit </button> <br>
+                <br>
+            </div> 
+
+          </div>
+<!-- put js at the bottom electron issue  -->
+
+      <!-- <script src="code.js"></script> -->
+      <script src="main.js"></script>
+      <!-- <script src="renderer.js"></script> -->
+      <script src="linker.js"></script>
+    </body>
+  </html>
+  
