@@ -1,4 +1,4 @@
-# Bubble Sheet Marker using Optical Character Recognition (OCR)
+# Test Marker using Optical Character Recognition (OCR)
 
 ## Introduction 
 This series of Python and JavaScript files creates a desktop app where users can upload images of bubble sheet tests with 
