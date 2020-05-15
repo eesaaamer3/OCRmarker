@@ -15,7 +15,7 @@ the student has chosen, and compares it to the answer key. It determines if the 
 ## Python (ImageSlicer/Numpy)
 * Reads data file and places into specific dictionaries
 * Uses ImageSlicer module to seperate bubble sheet into individual bubbles
-* Script analyzes each RGB value and uses numpy to seperate into lists based on the origin
+* Analyzes each RGB value and uses numpy to seperate into lists based on the origin
 * Figures out the darkest in the row (answer student had chosen) and cross-references with answer key
 * Adds to overall score if student is right
 
