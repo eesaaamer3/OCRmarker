@@ -26,4 +26,4 @@ the student has chosen, and compares it to the answer key. It determines if the 
 ## Next Steps 
 These are some future additions that can be made to the application.
 * Reducing runtime 
-* Expanding capabilities (true or false, short answers, etc.)
+* Expanding capabilities (true/false, short answers, etc.)
