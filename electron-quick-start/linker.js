@@ -2,7 +2,7 @@
 var { PythonShell } = require("python-shell");
 const fs  = require('fs')
 
-// Uses python shell to create a function that runs a python script 
+// Uses python shell to create a function that runs the python script "argument.py"
 function triggerPythonCode(){
   PythonShell.run('argument.py', null, function (err) {
     if (err) throw err;
@@ -11,7 +11,7 @@ function triggerPythonCode(){
 }
 
 
-// Submits all document values at once
+// Submits all document values at once from the JavaScript form in "index.html"
 function submitAll(){
   let q1 = document.getElementById("hello1").value
   let q2 = document.getElementById("hello2").value
@@ -22,7 +22,7 @@ function submitAll(){
 // Holds the main answer key
 let Answers = []
 
-// Writes answers to a seperate text file 
+// Writes answers to a seperate text file "textfile.txt"
 function writePython() {
     fs.appendFileSync("textfile.txt", document.getElementById("name-of-student").value);
     fs.appendFileSync("textfile.txt", "\n");
@@ -185,12 +185,13 @@ function num_questions3() {
     document.getElementById("questions3").appendChild(j)
 }
 
+// Makes the button disappear after the user has clicked Submit on that button
 function showStuff(){
 
   document.getElementById("holder").style.display = "none"
   document.getElementById("uploader").style.display = "block"
 
-
+// Makes the Upload Image button disappear after the user has clicked the Upload Image button 
 }
 
 function showsub(){
