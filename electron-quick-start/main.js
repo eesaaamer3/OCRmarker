@@ -6,6 +6,9 @@ const path = require('path')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+// Basic functions used by Electron to create the app window, and keep it running until the user 
+// tells it to quit
+
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
