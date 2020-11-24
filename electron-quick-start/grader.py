@@ -5,19 +5,27 @@ import numpy as np
 from firebase.firebase import FirebaseApplication
 from argument import *
 
-print("HELLO WORLD!")
+#print("HELLO WORLD!")
 
+# Contains the arry with all of the image files 
 page_images = ["images/page1.jpg", "images/page2.jpg", "images/page3.jpg"]
 
 page_scores = []
 
 page = 0
 
+
 def grading_page(page_image, page_number):
     correct = 0
     num_of_questions = 4
 
+    
     def get_average_RGB(image):
+        """ 
+        This function takes the slices of images created later in the function,
+        and analyzes the RGB value for each iamge. It returns the average for all RGB values
+        for each slice of the image. 
+        """
         # get image as numpy array
         im = Image.open(image, "r")
         # Generates of list of image RGB values
@@ -48,6 +56,8 @@ def grading_page(page_image, page_number):
 
     r = 0
     new = []
+    # Takes each RGB value in this list, and seperates them into lists of 4 
+    # Each list of 4 RGB values represents one question, with 4 possible answers 
     for row in image_list:
         for image in row:
             pixel = get_average_RGB(image)
@@ -59,8 +69,12 @@ def grading_page(page_image, page_number):
 
     x = 1
     question = 1
+    # The entire loop analyzes each list (question) and finds the darkest RGB value for each question 
+    # The darkest value represents the answer that has been filled in 
     for r in row_rgb_list:
         if question >= 1 and question < 5:
+            # Finds the answer filled in, and compares it with the answer key 
+            # Determines if the answer is correct, and then adds a point to the total score if this is the case  
             if r.index(min(r)) == int(answer_key1[str(x)]):
                 print("Question {} on this page was answered correctly!".format((str(int(row_rgb_list.index(r)) + 1))))
                 correct += 1
@@ -68,6 +82,7 @@ def grading_page(page_image, page_number):
                 print("Question {} on this page was answered incorrectly!".format((str(int(row_rgb_list.index(r)) + 1))))
             x += 1
             question +=1 
+        # The exact process used in the first if statement is repeated in the following code 
         elif question == 5:
             correct = 0
             x = 1
@@ -78,6 +93,7 @@ def grading_page(page_image, page_number):
                 print("Question {} on this page was answered incorrectly!".format((str(int(row_rgb_list.index(r)) + 1))))
             x += 1
             question +=1 
+        # The exact process used in the first if statement is repeated in the following code 
         elif question > 5 and question < 9:
             if r.index(min(r)) == int(answer_key2[str(x)]):
                 print("Question {} on this page was answered correctly!".format((str(int(row_rgb_list.index(r)) + 1))))
@@ -86,6 +102,7 @@ def grading_page(page_image, page_number):
                 print("Question {} on this page was answered incorrectly!".format((str(int(row_rgb_list.index(r)) + 1))))
             x += 1
             question +=1 
+        # The exact process used in the first if statement is repeated in the following code 
         elif question == 9:
             correct = 0
             x = 1
@@ -96,6 +113,7 @@ def grading_page(page_image, page_number):
                 print("Question {} on this page was answered incorrectly!".format((str(int(row_rgb_list.index(r)) + 1))))
             x += 1
             question +=1 
+        # The exact process used in the first if statement is repeated in the following code 
         elif question > 9 and question < 13:
             if r.index(min(r)) == int(answer_key3[str(x)]):
                 print("Question {} on this page was answered correctly!".format((str(int(row_rgb_list.index(r)) + 1))))
@@ -105,31 +123,36 @@ def grading_page(page_image, page_number):
             x += 1
             question +=1 
 
-
+    # Calculates the score for that page 
     score = (correct / int(num_of_questions)) * 100
     
     return score
 
 
+# Determines the student score on the entire assessment based on the amount of questions they got right
 def result_from_assessment(x):
     return int(sum(x) / len(x))
 
-
+# Takes the result of each page and appends it to the main array
 for page_image in page_images:
+    # Executes the main grading function, and appends it to the array directly 
     page_scores.append(grading_page(page_image, page))
     page += 1
 
 
-print(name)
-print(quiz)
-print(result_from_assessment(page_scores))
+#print(name)
+#print(quiz)
+#print(result_from_assessment(page_scores))
 
-
+# Opens the Firebase database 
 app = FirebaseApplication("https://assistant-tomoya.firebaseio.com/", None)
+
+# Formats the final name and score into a dictionary
 data = {
     "Name": name,
     "Score": result_from_assessment(page_scores)
 }
+# Uploads the data onto Firebase 
 result = app.post("/Grades/Quiz2", data)
 
-print("This student achieved a score of {}% on {}".format(result_from_assessment(page_scores), quiz))
+#print("This student achieved a score of {}% on {}".format(result_from_assessment(page_scores), quiz))
