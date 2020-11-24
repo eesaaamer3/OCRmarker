@@ -16,6 +16,7 @@ with open("textfile.txt") as f:
 
     # From this point on, the script will read from the third line of the test file    
     # The following code splits the data into three seperate dictionaries to allow for simplicity and organization
+    # it also matches up with the way the grading algorithm is executed in "grader.py"
     for line in f:
         if a < 5:
             # Takes each answer from the answer key text file and assigns it a numerical value
